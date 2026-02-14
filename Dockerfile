@@ -1,5 +1,5 @@
-# Use official OpenJDK 17 image
-FROM openjdk:17-jdk-slim
+# Use official OpenJDK 17 (Eclipse Temurin)
+FROM eclipse-temurin:17-jdk
 
 # Set working directory inside container
 WORKDIR /app
@@ -10,7 +10,7 @@ COPY .mvn .mvn
 COPY pom.xml .
 COPY src src
 
-# Give execute permission to mvnw (needed for Linux)
+# Give execute permission to mvnw
 RUN chmod +x mvnw
 
 # Build the Spring Boot application (skip tests to speed up)
