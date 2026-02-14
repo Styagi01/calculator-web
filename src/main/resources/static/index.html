@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <script>
+        async function calculate() {
+            let a = document.getElementById("a").value;
+            let b = document.getElementById("b").value;
+            let operation = document.getElementById("operation").value;
+
+            let url = `http://localhost:9090/${operation}?a=${a}&b=${b}`;
+            let response = await fetch(url);
+            let result = await response.text();
+            document.getElementById("result").innerText = "Result: " + result;
+        }
+    </script>
+</head>
+<body>
+    <h1>Simple Calculator</h1>
+    <input type="number" id="a" placeholder="Enter first number">
+    <input type="number" id="b" placeholder="Enter second number">
+    <select id="operation">
+        <option value="add">Add</option>
+        <option value="subtract">Subtract</option>
+        <option value="multiply">Multiply</option>
+        <option value="divide">Divide</option>
+    </select>
+    <button onclick="calculate()">Calculate</button>
+    <p id="result"></p>
+</body>
+</html>
